@@ -1,4 +1,7 @@
-import { useEffect, useRef, useState } from 'react';
+import { useRef, useState } from 'react';
+import windIcon from '../../icons/cloud-wind-icon.svg'
+import humidityIcon from '../../icons/drop-humidity-icon.svg'
+import searchIcon from '../../icons/search-icon.svg'
 import './style.css'
 
 const Weather = () => {
@@ -30,17 +33,26 @@ const Weather = () => {
     }
 
     return (
-    <div className="weather">
+    <div className="weather-app">
         <div className = "search-bar">
-            <input ref= {inputRef} type="text" placeholder="Search..."/>
-            <button onClick = {() => search(inputRef.current.value)} >Search</button>
+            <input ref= {inputRef} type="text" placeholder="Search..." className="search-input"/>
+            <button onClick = {() => search(inputRef.current.value)} ><img src={searchIcon} className="search-icon"/></button>
         </div>
 
-        {weatherData? <>
-            <img src={weatherData.icon} alt="weather icon"/>
-            <div className="temperature">{weatherData.temperature}ºC</div>
-            <div className="location">{weatherData.location}</div>
-        </> : <></>}
+        {weatherData? 
+        <div classname = "weather-info">
+            <div className = "first-info">
+                <img src={weatherData.icon} alt="weather icon"/>
+                <div>
+                    <div className="location">{weatherData.location}</div>
+                    <div className="temperature">{weatherData.temperature}ºC</div>
+                </div>
+            </div>
+            <div className = "second-info">
+                <div className="humidity">Humidity: {weatherData.humidity}%</div>
+                <div className="windspeed">Wind Speed: {weatherData.windSpeed} km/h</div>
+            </div>
+        </div> : <></>}
 
     
     </div>
