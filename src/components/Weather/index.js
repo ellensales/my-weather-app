@@ -43,14 +43,29 @@ const Weather = () => {
         <div classname = "weather-info">
             <div className = "first-info">
                 <img src={weatherData.icon} alt="weather icon"/>
-                <div>
+                <div className="first-info-data">
                     <div className="location">{weatherData.location}</div>
-                    <div className="temperature">{weatherData.temperature}ºC</div>
+                    <div className="temperature">
+                        <p className="temperature-number">{weatherData.temperature}</p>
+                        <p className="temperature-symbol">ºC</p>
+                    </div>
                 </div>
             </div>
             <div className = "second-info">
-                <div className="humidity">Humidity: {weatherData.humidity}%</div>
-                <div className="windspeed">Wind Speed: {weatherData.windSpeed} km/h</div>
+                <div className="humidity-wrapper">
+                    <p className="humidity-title">Humidity:</p>
+                    <div className="humidity-info">
+                        <img src={humidityIcon} alt="humidity icon" className="humidity-icon"/>
+                        <p>{weatherData.humidity}%</p>
+                    </div>
+                </div>
+                <div className="windspeed-wrapper">
+                    <p className="windspeed-title">Wind Speed:</p>
+                    <div className="windspeed-info">
+                        <img src={windIcon} alt="wind icon" className="wind-icon"/>
+                        <p>{weatherData.windSpeed} km/h</p>
+                    </div>
+                </div>
             </div>
         </div> : <></>}
 
